@@ -5,9 +5,13 @@ import { AppDispatch } from "../store";
 import { Auth } from "./actionTypes";
 import { setCookie } from "../helpers/cookieHelpers";
 
-const MAX_AGE = 15 * 60 * 60; // Universal cookie accepts seconds
+const MAX_AGE = 30 //15 * 60 * 60; // Universal cookie accepts seconds
 
-export const login = (username: string, password: string, cb: any) => {
+export const login = (
+  username: string,
+  password: string,
+  callback: VoidFunction
+) => {
   return (dispatch: AppDispatch) => {
     dispatch({ type: Auth.LOGIN_REQUEST });
     const loginCred: LoginDto = {
@@ -21,7 +25,7 @@ export const login = (username: string, password: string, cb: any) => {
         const rfToken = (res.data as LoggedInDto).refresh_token;
         dispatch({ type: Auth.LOGIN_SUCCESS });
         setCookie("accessToken", token, { maxAge: MAX_AGE });
-        cb();
+        callback();
         setTimeout(() => {
           dispatch(refreshToken(rfToken));
         }, MAX_AGE);

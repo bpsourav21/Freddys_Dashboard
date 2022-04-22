@@ -23,7 +23,7 @@ const Sidebar = () => {
           Orders
         </Link>
         <Link className="nav-link" to="/login">
-          <span onClick={() => dispatch(logout)}>Logout</span>
+          <span onClick={() => dispatch(logout())}>Logout</span>
         </Link>
       </div>
     </nav>

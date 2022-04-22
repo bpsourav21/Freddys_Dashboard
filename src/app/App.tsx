@@ -8,9 +8,14 @@ import Orders from "./components/Orders";
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
 import { getCookie } from "./helpers/cookieHelpers";
 import _ from "underscore";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { AuthState } from "./reducers/authReducer";
 
 const App = () => {
-  let isAuthenticated = !_.isEmpty(getCookie("accessToken"));
+  // let isAuthenticated = !_.isEmpty(getCookie("accessToken"));
+  const authState: AuthState = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  let isAuthenticated = authState.isAuthenticated;  
   return (
     <div className="mainWrapper">
       <BrowserRouter>
