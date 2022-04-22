@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { login } from "../actions/authActions";
 import { ReactComponent as FreddysLogo } from "../helpers/svg/Freddys_Logo.svg";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -8,6 +9,7 @@ import LoadingOverlay from "./LoadingOverlay";
 const Login = () => {
   const authState: AuthState = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  let navigate = useNavigate();
 
   const onSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,8 +19,7 @@ const Login = () => {
     const password = e.target.password.value;
     dispatch(
       login(username, password, () => {
-        // TO DO need to navigate to Dashboard
-        window.location.href = "/dashboard";
+        navigate("/dashboard");
       })
     );
   };

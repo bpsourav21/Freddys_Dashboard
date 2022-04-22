@@ -9,7 +9,7 @@ const Dashboard = () => {
   const homeState: HomeState = useAppSelector((state) => state.home);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getDashboard);
+    dispatch(getDashboard());
   }, []);
 
   const bestSellers =

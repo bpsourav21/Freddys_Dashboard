@@ -1,12 +1,4 @@
-import {
-  DASHBOARD_DATA_FAILED,
-  DASHBOARD_DATA_REQUEST,
-  DASHBOARD_DATA_SUCCESS,
-  ORDERS_FAILED,
-  ORDERS_REQUEST,
-  ORDERS_SUCCESS,
-  SET_CURRENT_PAGE,
-} from "../actions/actionTypes";
+import { DashBoard, Orders } from "../actions/actionTypes";
 import { DashboardDto, OrderDto } from "../models/dashboard";
 
 export interface HomeState {
@@ -30,43 +22,43 @@ export const homeReducer = (
   action: any
 ): HomeState => {
   switch (action.type) {
-    case ORDERS_REQUEST:
-      return {
-        ...state,
-        orders: [],
-        isLoading: true,
-      };
-    case ORDERS_SUCCESS:
-      return {
-        ...state,
-        orders: action.payload,
-        isLoading: false,
-      };
-    case ORDERS_FAILED:
-      return {
-        ...state,
-        orders: [],
-        isLoading: false,
-      };
-    case DASHBOARD_DATA_REQUEST:
+    case DashBoard.DASHBOARD_DATA_REQUEST:
       return {
         ...state,
         dashboardData: {} as DashboardDto,
         isLoading: true,
       };
-    case DASHBOARD_DATA_SUCCESS:
+    case DashBoard.DASHBOARD_DATA_SUCCESS:
       return {
         ...state,
         dashboardData: action.payload,
         isLoading: false,
       };
-    case DASHBOARD_DATA_FAILED:
+    case DashBoard.DASHBOARD_DATA_FAILED:
       return {
         ...state,
         dashboardData: {} as DashboardDto,
         isLoading: false,
       };
-    case SET_CURRENT_PAGE:
+    case Orders.ORDERS_REQUEST:
+      return {
+        ...state,
+        orders: [],
+        isLoading: true,
+      };
+    case Orders.ORDERS_SUCCESS:
+      return {
+        ...state,
+        orders: action.payload,
+        isLoading: false,
+      };
+    case Orders.ORDERS_FAILED:
+      return {
+        ...state,
+        orders: [],
+        isLoading: false,
+      };
+    case Orders.SET_CURRENT_PAGE:
       return {
         ...state,
         currentPage: action.payload,
