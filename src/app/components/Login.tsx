@@ -18,7 +18,7 @@ const Login = () => {
     dispatch(
       login(username, password, () => {
         // TO DO need to navigate to Dashboard
-        // window.location.href = "/dashboard";
+        window.location.href = "/dashboard";
       })
     );
   };
