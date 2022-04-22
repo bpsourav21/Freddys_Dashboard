@@ -2,10 +2,6 @@ import {
   DASHBOARD_DATA_FAILED,
   DASHBOARD_DATA_REQUEST,
   DASHBOARD_DATA_SUCCESS,
-  LOGIN_FAILED,
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGOUT_REQUEST,
   ORDERS_FAILED,
   ORDERS_REQUEST,
   ORDERS_SUCCESS,
@@ -34,27 +30,6 @@ export const homeReducer = (
   action: any
 ): HomeState => {
   switch (action.type) {
-    case LOGIN_REQUEST:
-      return {
-        ...state,
-        isLoading: true,
-        loginErrorMsg: "",
-      };
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-      };
-    case LOGIN_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        loginErrorMsg: action.payload,
-      };
-    case LOGOUT_REQUEST:
-      return {
-        ...state,
-      };
     case ORDERS_REQUEST:
       return {
         ...state,
