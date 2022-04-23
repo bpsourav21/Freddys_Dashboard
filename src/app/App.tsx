@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Layout from "./components/Layout";
 import "./App.css";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
@@ -14,15 +14,8 @@ const App = () => {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route>
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute redirectPath="/login">
-                    <Home />
-                  </ProtectedRoute>
-                }
-              >
+            <Route path="/" element={<Layout />}>
+              <Route element={<ProtectedRoute redirectPath="/login" />}>
                 <Route index element={<Dashboard />} />
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="orders" element={<Orders />} />

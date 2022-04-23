@@ -2,13 +2,13 @@ import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
-const Home = () => {
+const Layout = () => {
   return (
     <div className="mainWrapper">
       <Navbar />
       <div className="wrapper">
         <Sidebar />
-        <div className="home">
+        <div className="main-outlet">
           <Outlet />
         </div>
       </div>
@@ -16,4 +16,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Layout;

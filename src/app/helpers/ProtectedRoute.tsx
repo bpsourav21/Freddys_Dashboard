@@ -5,7 +5,7 @@ import { useAppAuth, useAppDispatch } from "../hooks";
 
 interface ProtectedRouteProps {
   redirectPath: string;
-  children: JSX.Element;
+  children?: React.ReactElement;
 }
 
 export const ProtectedRoute = ({
@@ -17,7 +17,6 @@ export const ProtectedRoute = ({
   const { isAuthenticated } = useAppAuth();
 
   useEffect(() => {
-    console.log("isAuthenticated", isAuthenticated);
     dispatch(isUserAuthenticated());
   });
 

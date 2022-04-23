@@ -52,17 +52,17 @@ code {
 .mainWrapper .wrapper .sidebar .sidebar-links {
   text-decoration: none;
 }
-.mainWrapper .wrapper .home {
+.mainWrapper .wrapper .main-outlet {
   padding: 10px;
   padding-top: 75px;
   height: 100vh;
 }
-.mainWrapper .wrapper .home .status-section {
+.mainWrapper .wrapper .main-outlet .status-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.mainWrapper .wrapper .home .status-section .status {
+.mainWrapper .wrapper .main-outlet .status-section .status {
   border: 1px solid #000;
   padding: 20px;
   margin: 20px;

@@ -62,8 +62,6 @@ export const refreshToken = (refreshToken: string) => {
 };
 
 export const isUserAuthenticated = () => {
-  console.log("user auth.");
-  
   return (dispatch: AppDispatch) => {
     let isCookieExpired = _.isEmpty(getCookie("accessToken"));
     if (isCookieExpired) {
