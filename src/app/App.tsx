@@ -6,40 +6,32 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Orders from "./components/Orders";
 import { ProtectedRoute } from "./helpers/ProtectedRoute";
-import { getCookie } from "./helpers/cookieHelpers";
-import _ from "underscore";
-import { useAppDispatch, useAppSelector } from "./hooks";
-import { AuthState } from "./reducers/authReducer";
+import { AuthProvider } from "./helpers/AuthProvider";
 
 const App = () => {
-  // let isAuthenticated = !_.isEmpty(getCookie("accessToken"));
-  const authState: AuthState = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
-  let isAuthenticated = authState.isAuthenticated;  
   return (
     <div className="mainWrapper">
       <BrowserRouter>
-        <Routes>
-          <Route>
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute
-                  isAuthenticated={isAuthenticated}
-                  redirectPath="/login"
-                >
-                  <Home />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Dashboard />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="orders" element={<Orders />} />
+        <AuthProvider>
+          <Routes>
+            <Route>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute redirectPath="/login">
+                    <Home />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Dashboard />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="orders" element={<Orders />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

@@ -3,9 +3,10 @@ import { API_ENDPOINT } from "../helpers/constants";
 import { LoggedInDto, LoginDto } from "../models/auth";
 import { AppDispatch } from "../store";
 import { Auth } from "./actionTypes";
-import { setCookie } from "../helpers/cookieHelpers";
+import { getCookie, setCookie } from "../helpers/cookieHelpers";
+import _ from "underscore";
 
-const MAX_AGE = 30 //15 * 60 * 60; // Universal cookie accepts seconds
+const MAX_AGE = 30; //15 * 60 * 60; // Universal cookie accepts seconds
 
 export const login = (
   username: string,
@@ -57,5 +58,18 @@ export const refreshToken = (refreshToken: string) => {
       .catch((e) => {
         setCookie("accessToken", null, { maxAge: 0 });
       });
+  };
+};
+
+export const isUserAuthenticated = () => {
+  console.log("user auth.");
+  
+  return (dispatch: AppDispatch) => {
+    let isCookieExpired = _.isEmpty(getCookie("accessToken"));
+    if (isCookieExpired) {
+      dispatch({ type: Auth.AUTHENTICATION_REQUEST, payload: false });
+    } else {
+      dispatch({ type: Auth.AUTHENTICATION_REQUEST, payload: true });
+    }
   };
 };

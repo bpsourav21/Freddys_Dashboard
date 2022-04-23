@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { login } from "../actions/authActions";
 import { ReactComponent as FreddysLogo } from "../helpers/svg/Freddys_Logo.svg";
 import { useAppDispatch, useAppSelector } from "../hooks";
@@ -9,7 +9,10 @@ import LoadingOverlay from "./LoadingOverlay";
 const Login = () => {
   const authState: AuthState = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  //@ts-ignore
+  const redirectPath = location.state?.path || "/";
 
   const onSubmitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,9 +20,10 @@ const Login = () => {
     const username = e.target.username.value;
     //@ts-ignore
     const password = e.target.password.value;
+    navigate(redirectPath, { replace: true });
     dispatch(
       login(username, password, () => {
-        navigate("/dashboard");
+        navigate(redirectPath, { replace: true });
       })
     );
   };

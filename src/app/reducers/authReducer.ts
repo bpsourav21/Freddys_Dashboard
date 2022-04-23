@@ -41,6 +41,11 @@ export const authReducer = (
         ...state,
         isAuthenticated: false,
       };
+    case Auth.AUTHENTICATION_REQUEST:
+      return {
+        ...state,
+        isAuthenticated: action.payload,
+      };
     default:
       return state;
   }
