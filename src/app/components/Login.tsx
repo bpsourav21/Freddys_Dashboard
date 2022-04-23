@@ -30,49 +30,47 @@ const Login = () => {
 
   return (
     <section className="vh-100" style={{ backgroundColor: "#fff" }}>
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-            <div className="card shadow-2-strong" style={{ borderRadius: 1 }}>
-              <div className="card-body p-5">
-                <form onSubmit={(e) => onSubmitLogin(e)}>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <h3>Freddys Artisanal Halloween Candy Shop</h3>
-                    <FreddysLogo width={120} height={120} />
-                  </div>
-                  <div className="form-group mb-2">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Enter username"
-                      name="username"
-                    />
-                  </div>
-                  <div className="form-group mb-2">
-                    <input
-                      type="password"
-                      className="form-control"
-                      placeholder="Enter password"
-                      name="password"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn btn-primary btn-block mt-2 mb-2"
-                  >
-                    Login
-                  </button>
-                  <p style={{ color: "red", height: "10px" }}>
-                    {authState.loginErrorMsg}
-                  </p>
-                </form>
-              </div>
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div className="card shadow-2-strong" style={{ borderRadius: 1 }}>
+            <div className="card-body p-5">
+              <form onSubmit={(e) => onSubmitLogin(e)}>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <h3>Freddys Artisanal Halloween Candy Shop</h3>
+                  <FreddysLogo width={120} height={120} />
+                </div>
+                <div className="form-group mb-2">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Enter username"
+                    name="username"
+                  />
+                </div>
+                <div className="form-group mb-2">
+                  <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter password"
+                    name="password"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block mt-2 mb-2"
+                >
+                  Login
+                </button>
+                <p style={{ color: "red", height: "10px" }}>
+                  {authState.loginErrorMsg}
+                </p>
+              </form>
             </div>
           </div>
         </div>

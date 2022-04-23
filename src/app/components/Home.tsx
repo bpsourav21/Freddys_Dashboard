@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="mainWrapper">
       <Navbar />
       <div className="wrapper">
         <Sidebar />
